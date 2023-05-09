@@ -1,4 +1,4 @@
-﻿namespace ExcelToXML
+namespace ExcelToXML
 {
     partial class FormMainWindow
     {
