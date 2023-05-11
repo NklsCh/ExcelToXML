@@ -19,12 +19,9 @@ namespace ExcelToXML
         {
             InitializeComponent();
             Debug.WriteLine("Form Intialized");
-            readCSV();
         }
-        public static void readCSV()//var file
+        public static string[,] readCSV(System.IO.Stream file, string path)
         {
-            string path = @".\..\..\test.csv";
-
             using (StreamReader parser = new StreamReader(path))
             {
                 string[] rows = parser.ReadToEnd().Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.None);
@@ -37,10 +34,9 @@ namespace ExcelToXML
                     for(int y = 0; y < rowLength; y++) // Iterating over each cell in row
                     {
                         table[i, y] = cells[y].Trim(); // Adding cells to 2D Array
-                        Debug.WriteLine(table[i, y]);
                     }
                 }
-                Debug.WriteLine(table[1, 0]);
+                return table;
             }
 
         }

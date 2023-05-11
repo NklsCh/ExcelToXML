@@ -20,15 +20,5 @@ namespace ExcelToXML
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
-
-        public static void readCSV()//var file
-        {
-            string path = @"C:\Users\tomsa\Desktop\dev\ExcelToXML\ExcelToXML\test.csv";
-
-            using (StreamReader parser = new StreamReader(path))
-            {
-                Console.WriteLine(parser.ReadToEnd());
-            }
-        }
     }
 }
