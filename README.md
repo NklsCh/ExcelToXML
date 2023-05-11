@@ -3,10 +3,10 @@
 ## Layouts:
 
 ### Default (Gray)
-![Gray](https://github.com/NklsCh/ExcelToXML/assets/110597338/d7f201fb-892e-4b65-a779-2c9be2400376)
+![Gray](https://github.com/NklsCh/ExcelToXML/assets/110597338/e50fbfab-60d2-4820-89cf-e74d41e011c4)
 
 ### Green 
-![Green](https://github.com/NklsCh/ExcelToXML/assets/110597338/0ecbab94-9d62-4427-a688-6422b4839185)
+![Green](https://github.com/NklsCh/ExcelToXML/assets/110597338/f681cb70-a22e-474c-8896-bf17fc61524f)
 
 ### Dark Green 
-![Darkgreen](https://github.com/NklsCh/ExcelToXML/assets/110597338/15a9d606-351c-4690-a80e-059da1a616e0)
+![Darkgreen](https://github.com/NklsCh/ExcelToXML/assets/110597338/654c6306-f033-4de1-a1f0-d60ff0c49156)
