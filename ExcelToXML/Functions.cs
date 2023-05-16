@@ -75,7 +75,7 @@ namespace ExcelToXML
                 using (StreamWriter writer = new StreamWriter(Path.Combine(docPath, "file.xml")))
                 {
                     writer.WriteLine("<?xml version =\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\r\n<Root>");
-                    for (int i = 1; i < table.GetLength(0); i++)
+                    for (int i = 1; i < table.GetLength(0) - 1; i++)
                     {
                         string template = $"\t<BESTELLUNG>" +
                                           $"\n\t\t<KD_ID>{table[i, 0]}</KD_ID>" +
