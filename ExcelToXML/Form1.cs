@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using ExcelToXML;
 
@@ -6,6 +7,8 @@ namespace ExcelToXML
 {
     public partial class FormMainWindow : Form
     {
+        System.IO.Stream file;
+        string filename;
         public FormMainWindow()
         {
             InitializeComponent();
@@ -16,7 +19,8 @@ namespace ExcelToXML
             ofd.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
             ofd.FilterIndex = 1;
             ofd.ShowDialog();
-            var file = ofd.OpenFile();
+            filename = ofd.FileName;
+            file = ofd.OpenFile();
             Functions f = new Functions();
             f.writeCSV(f.readCSV(file, ofd.FileName), dataGridView1);
         }
@@ -24,6 +28,12 @@ namespace ExcelToXML
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Functions f = new Functions();
+            f.genXML(f.readCSV(file, filename));
         }
     }
 }

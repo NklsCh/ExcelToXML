@@ -66,5 +66,44 @@ namespace ExcelToXML
             }
             return table;
         }
+
+        public void genXML(string[,] table)
+        {
+            try
+            {
+                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                using (StreamWriter writer = new StreamWriter(Path.Combine(docPath, "file.xml")))
+                {
+                    writer.WriteLine("<?xml version =\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\r\n<Root>");
+                    for (int i = 1; i < table.GetLength(0); i++)
+                    {
+                        string template = $"\t<BESTELLUNG>" +
+                                          $"\n\t\t<KD_ID>{table[i, 0]}</KD_ID>" +
+                                          $"\n\t\t<KD_VORNAME>{table[i, 1]}</KD_VORNAME>" +
+                                          $"\n\t\t<KD_NACHNAME>{table[i, 2]}</KD_NACHNAME>" +
+                                          $"\n\t\t<KD_TELEFON>{table[i, 3]}</KD_TELEFON>" +
+                                          $"\n\t\t<BESTELL_NR>{table[i, 4]}</BESTELL_NR>" +
+                                          $"\n\t\t<POSITION>{table[i, 5]}</POSITION>" +
+                                          $"\n\t\t<BESTELLDATUM>{table[i, 6]}</BESTELLDATUM>" +
+                                          $"\n\t\t<B_ID>{table[i, 7]}</B_ID>" +
+                                          $"\n\t\t<B_VORNAME>{table[i, 8]}</B_VORNAME>" +
+                                          $"\n\t\t<B_NACHNAME>{table[i, 9]}</B_NACHNAME>" +
+                                          $"\n\t\t<B_TELEFON>{table[i, 10]}</B_TELEFON>" +
+                                          $"\n\t\t<ARTIKEL>{table[i, 11]}</ARTIKEL>" +
+                                          $"\n\t\t<NETTOPREIS>{table[i, 12]}</NETTOPREIS>" +
+                                          $"\n\t\t<ANZAHL>{table[i, 13]}</ANZAHL>" +
+                                          $"\n\t\t<STEUERSATZ>{table[i, 14]}</STEUERSATZ>" +
+                                          $"\n\t</BESTELLUNG>";
+                                            
+                        writer.WriteLine(template);
+                    }
+                    writer.WriteLine("</Root>");
+                }
+            }
+            catch (Exception exp)
+            {
+                Debug.WriteLine(exp.Message);
+            }
+        }
     }
 }
