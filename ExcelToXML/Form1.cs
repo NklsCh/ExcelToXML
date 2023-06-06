@@ -1,20 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
+using ExcelToXML;
 
 namespace ExcelToXML
 {
-    public partial class Form1 : Form
+    public partial class FormMainWindow : Form
     {
-        public Form1()
+        System.IO.Stream file;
+        string filename;
+        public FormMainWindow()
         {
             InitializeComponent();
+        }
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            ofd.FilterIndex = 1;
+            ofd.ShowDialog();
+            filename = ofd.FileName;
+            file = ofd.OpenFile();
+            Functions f = new Functions();
+            f.writeCSV(f.readCSV(file, ofd.FileName), dataGridView1);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Functions f = new Functions();
+            f.genXML(f.readCSV(file, filename));
         }
     }
 }
